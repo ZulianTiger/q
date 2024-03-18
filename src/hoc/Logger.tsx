@@ -10,7 +10,7 @@ const withLogger = ({ componentName, message = "Hello from" }: LoggerProps) => {
     const WithLogger: React.FC<any> = (props) => {
       useEffect(() => {
         console.log(`${message} ${componentName}`);
-      }, [componentName, message]);
+      }, []);
 
       return <WrappedComponent {...props} />;
     };
