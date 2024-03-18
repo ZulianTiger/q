@@ -31,19 +31,28 @@ export default function Posts() {
   };
 
   return (
-    <div>
-      <h1>Posts page</h1>
+    <div className="posts-page">
+      <h1>All posts</h1>
       <TextInput
         value={search}
         placeholder="Search..."
         label="Search posts by username"
         onValueChange={handleSearchChange}
       />
-      {posts
-        .filter((post) => post.userName?.includes(search))
-        .map((post) => (
-          <PostCard id={post.id} title={post.title} userName={post.userName} />
-        ))}
+      <div className="posts-grid">
+        {posts
+          .filter((post) =>
+            post.userName?.toLowerCase().includes(search.trim().toLowerCase())
+          )
+          .map((post) => (
+            <PostCard
+              key={`post-${post.id}`}
+              id={post.id}
+              title={post.title}
+              userName={post.userName}
+            />
+          ))}
+      </div>
     </div>
   );
 }

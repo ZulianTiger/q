@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+.posts-page {
+  padding: 24px 32px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.posts-grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 1024px) {
+  .posts-grid {
+    grid-template-columns: 50% 50%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (max-width: 600px) {
+  .posts-grid {
+    grid-template-columns: 100%;
+  }
+}
+
+.post-card-container {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  color: #2b2d42;
+  text-decoration: none;
+}
+
+.post-card-container h2 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.comment-container {
+  width: 95%;
+  background-color: lightblue;
+  padding: 4px 16px;
+  margin-bottom: 8px;
+  border-radius: 16px;
+}
+
+.comment-container h6 {
+  margin: 0;
+  font-size: 14px
+}
+
+.text-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-input-container input {
+  height: 50px;
+  padding: 4px 16px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.text-input-container label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: gray;
+}
+
+.header-container {
+  border-bottom: 1px solid darkgray;
+}
+
+.header-container ul {
+  list-style: none;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.header-list a {
+  text-decoration: none;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-list a:hover {
+  color: teal;
+  transition-duration: 300ms;
+}
+
+.header-list li:first-of-type {
+  margin-right: 64px;
 }

@@ -17,7 +17,7 @@ const TextInput: React.FC<TextInputProps> = ({
   onValueChange,
 }) => {
   return (
-    <div>
+    <div className="text-input-container">
       <label htmlFor={`${label}-text-input`}>{label}</label>
       <input
         id={`${label}-text-input`}
