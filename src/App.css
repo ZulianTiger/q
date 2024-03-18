@@ -6,7 +6,8 @@
   margin-top: 60px;
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  gap: 16px;
+  column-gap: 16px;
+  row-gap: 40px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -40,10 +41,11 @@
 
 .comment-container {
   width: 95%;
-  background-color: lightblue;
+  background-color: #bde0fe;
   padding: 4px 16px;
   margin-bottom: 8px;
   border-radius: 16px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .comment-container h6 {
