@@ -3,6 +3,7 @@ import TextInput from "../../components/TextInput";
 import { Post, User } from "../../types/common";
 import { getPosts } from "../../services/posts";
 import { getUsers } from "../../services/users";
+import PostCard from "../../components/PostCard";
 
 export default function Posts() {
   const [search, setSearch] = useState<string>("");
@@ -13,6 +14,17 @@ export default function Posts() {
     getPosts().then((res) => setPosts(res as Post[]));
     getUsers().then((res) => setUsers(res as User[]));
   }, []);
+
+  useEffect(() => {
+    setPosts(
+      posts.map((post) => {
+        return {
+          ...post,
+          userName: users.filter((user) => user.id === post.userId)[0].username,
+        };
+      })
+    );
+  }, [users]);
 
   const handleSearchChange = (newValue: string) => {
     setSearch(newValue);
@@ -27,6 +39,11 @@ export default function Posts() {
         label="Search posts by username"
         onValueChange={handleSearchChange}
       />
+      {posts
+        .filter((post) => post.userName?.includes(search))
+        .map((post) => (
+          <PostCard id={post.id} title={post.title} userName={post.userName} />
+        ))}
     </div>
   );
 }

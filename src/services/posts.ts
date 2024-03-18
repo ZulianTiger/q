@@ -44,3 +44,27 @@ export const getPostDetails = (id: string) => {
     }
   });
 };
+
+export const getPostComments = (id: number) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/comments?postId=${id}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to load post comments");
+      }
+      const data: Post[] = await response.json();
+      resolve(data);
+    } catch (err: any) {
+      return reject(err.error);
+    }
+  });
+};
